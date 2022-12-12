@@ -2,11 +2,13 @@
 {
     public class CoinBalance : IVendingInterface
     {
+        // Handles transaction between wallet and vendingmachine balance, subtracts from one and adds to another
         public void InsertCoin()
         {
             string wallet = $"Wallet: Krona: {Wallet.nrOfOneCrowns} Femma: {Wallet.nrOfFiveCrowns} Tia: {Wallet.nrOfTenCrowns} Total value: {Wallet.totalWalletBalance} ";
             string vendingBalance = $"Vendingmachine: Total value: {VendingMachine.CurrentVendingBalance}";
-
+            string header = "Welcome to the vending machince, use the arrow keys and enter key to navigate the app";
+            Console.WriteLine(header);
             string[] insertCoinMenu =
             {
                     "one crown",
@@ -14,7 +16,7 @@
                     "one tenner",
                     "Leave"
                 };
-            MenuSelector insertMenu = new MenuSelector(Menu.header, wallet, vendingBalance, insertCoinMenu);
+            MenuSelector insertMenu = new MenuSelector(header, wallet, vendingBalance, insertCoinMenu, 3, 1);
             int topIndex = insertMenu.Navigate();
 
             switch (topIndex)
